@@ -66,7 +66,27 @@
 		<finalName>HelloWorld</finalName>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.0.0</version>
+			</plugin>
+			<!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.0.2</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.0.2</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>2.5.2</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.8.2</version>
+			</plugin>
+			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.0</version>
 				<configuration>
@@ -75,21 +95,20 @@
 				</configuration>
 			</plugin>
 			<plugin>
-		    <groupId>org.apache.maven.plugins</groupId>
-		    <artifactId>maven-surefire-plugin</artifactId>
-		    <version>2.19.1</version>
+		    	<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version>
 				<configuration>
-			    <redirectTestOutputToFile>true</redirectTestOutputToFile>
-			    <reportsDirectory>shippable/testresults</reportsDirectory>
-			  </configuration>
-		    <dependencies>
-		      <dependency>
-		        <groupId>org.apache.maven.surefire</groupId>
-		        <artifactId>surefire-junit47</artifactId>
-		        <version>2.19.1</version>
-		      </dependency>
-		    </dependencies>
-		  </plugin>
+			    	<redirectTestOutputToFile>true</redirectTestOutputToFile>
+			    	<reportsDirectory>shippable/testresults</reportsDirectory>
+			  	</configuration>
+		    	<dependencies>
+		      		<dependency>
+		        		<groupId>org.apache.maven.surefire</groupId>
+		        		<artifactId>surefire-junit47</artifactId>
+		        		<version>2.19.1</version>
+		      		</dependency>
+		    	</dependencies>
+		  	</plugin>
 		</plugins>
 	</build>
 </project>
