@@ -10,6 +10,11 @@ build:
     pull: true
 
   ci:
-    - mkdir -p shippable/testresults && mkdir -p shippable/codecoverage
-    - mvn -q -B clean cobertura:cobertura install
-    - ls -al $SHIPPABLE_BUILD_DIR/target
+    - echo $nexus_url
+#    - mkdir -p shippable/testresults && mkdir -p shippable/codecoverage
+#    - mvn -q -B clean cobertura:cobertura install
+#    - ls -al $SHIPPABLE_BUILD_DIR/target
+
+integrations:
+  generic:
+    - integrationName: drship_nexus
