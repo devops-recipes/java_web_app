@@ -16,8 +16,7 @@ build:
        mkdir -p ~/.m2
     - shipctl replace temp/settings.xml pom.xml
     - cp temp/settings.xml ~/.m2/.
-    - mvn -q -B clean cobertura:cobertura install
-    - mvn deploy
+    - mvn -q -B clean install deploy
     - ls -al $SHIPPABLE_BUILD_DIR/target
 
 integrations:
