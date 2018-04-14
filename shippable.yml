@@ -5,7 +5,7 @@ jdk:
 
 build:
   pre_ci_boot:
-    image_name: devops-recipes/build_custom_ci_image
+    image_name: devopsrecipes/build_custom_ci
     image_tag: 582020
     pull: true
 
