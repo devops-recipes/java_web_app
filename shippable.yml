@@ -10,8 +10,13 @@ build:
     pull: true
 
   ci:
-    - echo $nexus_url
-#    - mkdir -p shippable/testresults && mkdir -p shippable/codecoverage
+    - |
+       mkdir -p shippable/testresults
+       mkdir -p shippable/codecoverage
+       mkdir -p .m2
+    - shipctl replace temp/settings.xml
+    - cp temp/settings.xml .m2/
+    - cat .m2/settings.ml
 #    - mvn -q -B clean cobertura:cobertura install
 #    - ls -al $SHIPPABLE_BUILD_DIR/target
 
