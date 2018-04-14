@@ -10,10 +10,6 @@ build:
     pull: true
 
   ci:
-    - ls -al
-    - df -h
-    - mvn -v
-
-#    - mkdir -p shippable/testresults && mkdir -p shippable/codecoverage
-#    - mvn -q -B clean cobertura:cobertura install
-#    - ls -al $SHIPPABLE_BUILD_DIR/target
+    - mkdir -p shippable/testresults && mkdir -p shippable/codecoverage
+    - mvn -q -B clean cobertura:cobertura install
+    - ls -al $SHIPPABLE_BUILD_DIR/target
