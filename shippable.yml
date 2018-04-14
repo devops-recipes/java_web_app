@@ -1,0 +1,19 @@
+language: java
+
+jdk:
+  - oraclejdk8
+
+build:
+  pre_ci_boot:
+    image_name: devops-recipes/build_custom_ci_image
+    image_tag: 582020
+    pull: true
+
+  ci:
+    - ls -al
+    - df -h
+    - mvn -v
+
+#    - mkdir -p shippable/testresults && mkdir -p shippable/codecoverage
+#    - mvn -q -B clean cobertura:cobertura install
+#    - ls -al $SHIPPABLE_BUILD_DIR/target
