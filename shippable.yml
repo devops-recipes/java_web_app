@@ -17,8 +17,8 @@ build:
     - shipctl replace temp/settings.xml
     - cp temp/settings.xml .m2/
     - cat .m2/settings.xml
-#    - mvn -q -B clean cobertura:cobertura install
-#    - ls -al $SHIPPABLE_BUILD_DIR/target
+    - mvn -q -B clean cobertura:cobertura install
+    - ls -al $SHIPPABLE_BUILD_DIR/target
 
 integrations:
   generic:
