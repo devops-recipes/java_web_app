@@ -20,7 +20,7 @@
         <mirror>
             <id>central</id>
             <name>central</name>
-            <url>${nexus_url}/repository/maven-public/</url>
+            <url>${nexus_url}/repository/snapshots/</url>
             <mirrorOf>*</mirrorOf>
         </mirror>
     </mirrors>

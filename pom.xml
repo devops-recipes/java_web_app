@@ -107,4 +107,10 @@
 		  	</plugin>
 		</plugins>
 	</build>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <url>${nexus_url}/repository/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
