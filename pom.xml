@@ -109,13 +109,7 @@
     <distributionManagement>
         <snapshotRepository>
             <id>nexus-snapshots</id>
-            <url>${nexus_url}/repository/snapshots</url>
+            <url>${nexus_url}/repository/maven-public</url>
         </snapshotRepository>
     </distributionManagement>
-    <repositories>
-        <repository>
-            <id>node_app_group</id>
-            <url>http://174.129.56.184:8081/repository/maven-public/</url>
-        </repository>
-    </repositories>
 </project>
