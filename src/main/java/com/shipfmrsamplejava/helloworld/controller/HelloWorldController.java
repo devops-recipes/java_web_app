@@ -1,4 +1,4 @@
-package com.shipfmrsamplejava.helloworld.controller;
+package com.demo.helloworld.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
