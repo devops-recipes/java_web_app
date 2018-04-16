@@ -19,8 +19,6 @@ env:
 build:
   pre_ci:
     - export IMG_TAG=$(shipctl get_resource_version_key build_custom_ci_img_dh "versionName")
-    - echo $IMG_TAG
-    - echo "gblenv="$artifact_id
 
   pre_ci_boot:
     image_name: devopsrecipes/build_custom_ci
