@@ -49,7 +49,7 @@ jobs:
     dependencyMode: strict
     triggerMode: parallel
     steps:
-      - IN: custom_ci_img
+      - IN: build_custom_ci_img_dh
       - OUT: war_loc
     flags:
       - war
