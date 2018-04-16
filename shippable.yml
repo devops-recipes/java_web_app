@@ -3,6 +3,19 @@ language: java
 jdk:
   - oraclejdk8
 
+integrations:
+  generic:
+    - integrationName: drship_nexus
+
+env:
+  global:
+    - group_id="com.demo"
+    - artifact_id="helloworld"
+    - artifact_version="0.0.1-SNAPSHOT"
+    - artifact_extension="war"
+    - artifact_repo="repository/snapshots"
+    - ship_test_res_loc="shippable/testresults"
+
 build:
   pre_ci_boot:
     image_name: devopsrecipes/build_custom_ci
@@ -10,15 +23,32 @@ build:
     pull: true
 
   ci:
+    - export repository_url=$nexus_url"/"$artifact_repo
     - |
-       mkdir -p shippable/testresults
-       mkdir -p shippable/codecoverage
+       mkdir -p $ship_test_res_loc
        mkdir -p ~/.m2
     - shipctl replace temp/settings.xml pom.xml
     - cp temp/settings.xml ~/.m2/.
     - mvn -q -B clean install deploy
     - ls -al $SHIPPABLE_BUILD_DIR/target
 
-integrations:
-  generic:
-    - integrationName: drship_nexus
+  on_success:
+    - shipctl put_resource_state_multi war_loc "versionName=$artifact_version" "artifact_version=$artifact_version" "group_id=$group_id" "artifact_id=$artifact_id"
+    - shipctl put_resource_state_multi war_loc "artifact_extension=$artifact_extension" "repository_url=$repository_url"
+
+resources:
+  - name: war_loc
+    type: params
+    versionTemplate:
+      params:
+        seed: true
+
+jobs:
+  - name: java_web_app_runCI
+    type: runCI
+    dependencyMode: strict
+    triggerMode: parallel
+    steps:
+      - OUT: war_loc
+    flags:
+      - war

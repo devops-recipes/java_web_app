@@ -1,10 +1,10 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.demo</groupId>
-	<artifactId>helloworld</artifactId>
-	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<groupId>${group_id}</groupId>
+	<artifactId>${artifact_id}</artifactId>
+	<packaging>${artifact_extension}</packaging>
+	<version>${artifact_version}</version>
 	<name>HelloWorld Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
@@ -94,7 +94,7 @@
 				<version>2.19.1</version>
 				<configuration>
 			    	<redirectTestOutputToFile>true</redirectTestOutputToFile>
-			    	<reportsDirectory>shippable/testresults</reportsDirectory>
+			    	<reportsDirectory>${ship_test_res_loc}</reportsDirectory>
 			  	</configuration>
 		    	<dependencies>
 		      		<dependency>
@@ -109,7 +109,7 @@
     <distributionManagement>
         <snapshotRepository>
             <id>nexus-snapshots</id>
-            <url>${nexus_url}/repository/snapshots</url>
+            <url>${repository_url}</url>
         </snapshotRepository>
     </distributionManagement>
 </project>
