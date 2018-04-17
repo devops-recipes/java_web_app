@@ -31,8 +31,8 @@ build:
     - shipctl put_resource_state_multi war_loc "versionName=$artifact_version" "artifact_version=$artifact_version" "group_id=$group_id" "artifact_id=$artifact_id"
     - shipctl put_resource_state_multi war_loc "artifact_extension=$artifact_extension" "repository_url=$repository_url" "build_nbr=$BUILD_NUMBER"
 
-  # OPTIONAL: if you want to use custom Docker Build Image and also store information in a params
-  # resource to be used in downstream Assembly Lines
+# OPTIONAL: if you want to use custom Docker Build Image and also store information in a params
+# resource to be used in downstream Assembly Lines
   pre_ci:
     - export IMG_TAG=$(shipctl get_resource_version_key build_custom_ci_img_dh "versionName")
 
