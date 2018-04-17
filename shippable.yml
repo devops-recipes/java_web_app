@@ -41,7 +41,6 @@ build:
     image_tag: $IMG_TAG
     pull: true
 
-
 resources:
   - name: war_loc
     type: params
