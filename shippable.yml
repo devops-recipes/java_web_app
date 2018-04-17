@@ -27,10 +27,6 @@ build:
     - mvn -q -B clean install deploy
     - ls -al $SHIPPABLE_BUILD_DIR/target
 
-  on_success:
-    - shipctl put_resource_state_multi war_loc "versionName=$artifact_version" "artifact_version=$artifact_version" "group_id=$group_id" "artifact_id=$artifact_id"
-    - shipctl put_resource_state_multi war_loc "artifact_extension=$artifact_extension" "repository_url=$repository_url" "build_nbr=$BUILD_NUMBER"
-
 # OPTIONAL: if you want to use custom Docker Build Image and also store information in a params
 # resource to be used in downstream Assembly Lines
   pre_ci:
@@ -40,6 +36,10 @@ build:
     image_name: devopsrecipes/build_custom_ci
     image_tag: $IMG_TAG
     pull: true
+
+  on_success:
+    - shipctl put_resource_state_multi war_loc "versionName=$artifact_version" "artifact_version=$artifact_version" "group_id=$group_id" "artifact_id=$artifact_id"
+    - shipctl put_resource_state_multi war_loc "artifact_extension=$artifact_extension" "repository_url=$repository_url" "build_nbr=$BUILD_NUMBER"
 
 resources:
   - name: war_loc
