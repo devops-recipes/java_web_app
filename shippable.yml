@@ -13,11 +13,12 @@ env:
     - artifact_id="helloworld"
     - artifact_version="0.0.1-SNAPSHOT"
     - artifact_extension="war"
-    - artifact_repo="repository/snapshots"
+    - artifact_repo="repository/maven-snapshots"
     - ship_test_res_loc="shippable/testresults"
 
 build:
   ci:
+    - export nexus_url="http://${NEXUS_HOST}"
     - export repository_url=$nexus_url"/"$artifact_repo
     - |
        mkdir -p $ship_test_res_loc
@@ -55,6 +56,7 @@ jobs:
     triggerMode: parallel
     steps:
       - IN: build_custom_ci_img_dh
+      - IN: gcp_nexus_info
       - OUT: war_loc
     flags:
       - war
